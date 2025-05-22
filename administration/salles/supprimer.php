@@ -1,0 +1,54 @@
+<?php
+include '../includes/header.php';
+include '../../api_helper.php';
+
+$id = $_GET['id'] ?? null;
+if (!$id) {
+    header('Location: index.php');
+    exit;
+}
+
+$salle = appelerApi("/salles/$id", 'GET')['data'] ?? null;
+if (!$salle) {
+    echo "<div class='alert alert-danger'>Salle introuvable.</div>";
+    include '../../includes/admin_footer.php';
+    exit;
+}
+
+$message = null;
+$erreur = null;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $resultat = appelerApi("/salles/$id", 'DELETE');
+
+    if ($resultat['success']) {
+        header('Location: index.php?supprime=1');
+        exit;
+    } else {
+        $erreur = $resultat['message'] ?? "Erreur inconnue.";
+    }
+}
+?>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Supprimer la salle</h2>
+
+    <?php if ($erreur): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($erreur) ?></div>
+    <?php endif; ?>
+
+    <div class="alert alert-warning">
+        Êtes-vous sûr de vouloir supprimer la salle <strong><?= htmlspecialchars($salle['reference']) ?></strong> du cinéma <strong><?= htmlspecialchars($salle['cinema_nom'] ?? '') ?></strong> ?
+    </div>
+
+    <form method="POST">
+        <a href="index.php" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Annuler
+        </a>
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Confirmer la suppression
+        </button>
+    </form>
+</div>
+
+<?php include '../includes/footer.php'; ?>
