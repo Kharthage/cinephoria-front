@@ -1,0 +1,164 @@
+Voici un README prêt à mettre dans Word pour le projet Cinephoria. Tu peux copier-coller directement le texte dans un fichier .docx ou .doc.
+
+---
+
+# Cinephoria
+
+Cinephoria est une application web et mobile permettant de gérer les films, les séances, les réservations et les avis des utilisateurs. Ce projet comprend une application web (gestion interne) et une application mobile (consultation et réservation par les utilisateurs).
+
+## Prérequis
+
+Avant de commencer, assurez-vous d'avoir installé les outils suivants :
+
+* Node.js (version 18 ou supérieure)
+* npm ou yarn
+* React pour l'application web
+* React Native pour l'application mobile
+* Expo CLI si vous utilisez Expo pour le mobile
+* Base de données MySQL ou MariaDB
+* Git (pour cloner le projet)
+
+## Installation
+
+### 1. Cloner le projet
+
+```bash
+git clone <URL_DU_REPO>
+cd cinephoria
+```
+
+### 2. Installer les dépendances
+
+#### Pour l'application web :
+
+```bash
+cd web
+npm install --legacy-peer-deps
+npm audit fix --force
+```
+
+#### Pour l'application mobile :
+
+```bash
+cd mobile
+npm install --legacy-peer-deps
+npm audit fix --force
+```
+
+## Configuration de la base de données
+
+1. Créez une base de données MySQL nommée `cinephoria`.
+2. Importez le fichier SQL fourni (`cinephoria.sql`) pour créer toutes les tables et insérer les données initiales.
+3. Configurez le fichier `.env` pour la connexion à la base de données :
+
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=ton_mot_de_passe
+DB_NAME=cinephoria
+PORT=5000
+```
+
+## Lancer le projet
+
+### Backend (API)
+
+1. Aller dans le dossier du backend :
+
+```bash
+cd backend
+```
+
+2. Installer les dépendances et lancer le serveur :
+
+```bash
+npm install
+npm run dev
+```
+
+Le serveur sera accessible sur : `http://localhost:5000`
+
+### Application Web (Front-end)
+
+1. Aller dans le dossier web :
+
+```bash
+cd web
+```
+
+2. Lancer l'application :
+
+```bash
+npm start
+```
+
+L'application sera accessible sur : `http://localhost:3000`
+
+### Application Mobile
+
+1. Aller dans le dossier mobile :
+
+```bash
+cd mobile
+```
+
+2. Lancer l'application avec Expo :
+
+```bash
+npm start
+```
+
+3. Scanner le QR code avec l'application Expo Go sur votre téléphone ou utiliser un émulateur Android/iOS.
+
+## Fonctionnalités principales
+
+### Pour les utilisateurs
+
+* Consulter les films et leurs séances
+* Réserver des billets
+* Visualiser les QR codes des billets
+* Noter les films et laisser des avis
+
+### Pour les employés / administrateurs
+
+* Gérer les films, séances et salles
+* Suivre les commandes et les réservations
+* Gérer les installations défaillantes dans les salles
+* Valider les avis des utilisateurs
+
+## Astuces / conseils
+
+* Si vous rencontrez des erreurs de dépendances, utilisez `npm install --legacy-peer-deps`.
+* Pour réinitialiser le cache et les modules Node :
+
+```bash
+rm -rf node_modules package-lock.json
+npm install --legacy-peer-deps
+```
+
+* Vérifiez que le serveur backend est bien lancé avant d'utiliser le front-end ou l'application mobile.
+
+## Structure du projet
+
+```
+cinephoria/
+├─ backend/      # API Node.js + Express
+├─ web/          # Application web React
+├─ mobile/       # Application mobile React Native
+├─ database/     # Fichiers SQL et scripts
+└─ README.md
+```
+
+## Contribution
+
+Vous pouvez contribuer à Cinephoria en :
+
+* Ajoutant des fonctionnalités
+* Corrigeant des bugs
+* Améliorant l'UI/UX
+
+Merci de créer une branche dédiée et de faire un pull request sur le dépôt principal.
+
+## Licence
+
+Cinephoria est open-source et sous licence MIT.
