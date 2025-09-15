@@ -38,4 +38,4 @@ $liste = $cinemas['data'] ?? [];
 </div>
 
 
-<?php include '../includes/footer.php'; ?>
+faire?eas

@@ -1,0 +1,10 @@
+# Bloque l'accès à tous les fichiers
+Order deny,allow
+Deny from all
+
+# Autorise uniquement l'accès depuis localhost
+<Files "*">
+    Allow from localhost
+    Allow from 127.0.0.1
+    Allow from ::1
+</Files>

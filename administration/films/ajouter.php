@@ -1,8 +1,8 @@
 <?php
+
 include '../includes/header.php';
 include '../../api_helper.php';
-
-// Récupération des genres via l'API
+// TODO : récupérer la liste des genres depuis la base données sans passer l'API externe
 $genres = appelerApi('/genres', 'GET')['data'] ?? [];
 
 $message = null;
@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'genres' => $_POST['genres'] ?? [],
     ];
 
+    // TODO : Insérer le film dans la base de données sans passer par l'API externe
     $resultat = appelerApi('/films', 'POST', $donnees);
 
     if ($resultat['success']) {

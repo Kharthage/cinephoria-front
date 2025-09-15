@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Évite la boucle de redirection : si pas connecté et pas sur index.php, redirige vers index.php
-if (!isset($_SESSION['utilisateur'])) {
+if (!isset($_SESSION['user'])) {
     if (basename($_SERVER['PHP_SELF']) !== 'index.php') {
         header('Location: /cinephoria-front/index.php');
         exit;
@@ -12,7 +12,7 @@ if (!isset($_SESSION['utilisateur'])) {
 }
 
 // Si l'utilisateur doit changer son mot de passe et n'est pas déjà sur changer_mdp.php, redirige
-if (isset($_SESSION['utilisateur']['changer_mdp']) && $_SESSION['utilisateur']['changer_mdp']) {
+if (isset($_SESSION['user']['changer_mdp']) && $_SESSION['user']['changer_mdp']) {
     if (basename($_SERVER['PHP_SELF']) !== 'changer_mdp.php') {
         header('Location: /cinephoria-front/changer_mdp.php?auto');
         exit;
@@ -20,7 +20,7 @@ if (isset($_SESSION['utilisateur']['changer_mdp']) && $_SESSION['utilisateur']['
 }
 
 // Contrôle du rôle admin (à adapter selon ta logique)
-if (isset($_SESSION['utilisateur']['role']) && $_SESSION['utilisateur']['role'] != "admin") {
+if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] != "admin") {
     if (basename($_SERVER['PHP_SELF']) !== 'index.php') {
         header('Location: /cinephoria-front/index.php?non_autorisee');
         exit;
@@ -49,11 +49,11 @@ if (isset($_SESSION['utilisateur']['role']) && $_SESSION['utilisateur']['role'] 
                     <li class="nav-item"><a class="nav-link" href="/cinephoria-front/contact.php">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="/cinephoria-front/commandes.php">Commandes</a></li>
 
-                    <?php if (isset($_SESSION['utilisateur']['role']) && $_SESSION['utilisateur']['role'] === 'admin'): ?>
+                    <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'admin'): ?>
                         <li class="nav-item"><a class="nav-link" href="/cinephoria-front/administration/index.php">Administration</a></li>
                     <?php endif; ?>
 
-                    <?php if (isset($_SESSION['utilisateur']['role']) && $_SESSION['utilisateur']['role'] === 'employe'): ?>
+                    <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'employe'): ?>
                         <li class="nav-item"><a class="nav-link" href="/cinephoria-front/intranet.php">Intranet</a></li>
                     <?php endif; ?>
 
