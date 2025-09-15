@@ -1,8 +1,4 @@
-Voici un README prêt à mettre dans Word pour le projet Cinephoria. Tu peux copier-coller directement le texte dans un fichier .docx ou .doc.
-
----
-
-# Cinephoria
+ README Cinephoria
 
 Cinephoria est une application web et mobile permettant de gérer les films, les séances, les réservations et les avis des utilisateurs. Ce projet comprend une application web (gestion interne) et une application mobile (consultation et réservation par les utilisateurs).
 
@@ -15,7 +11,7 @@ Avant de commencer, assurez-vous d'avoir installé les outils suivants :
 * React pour l'application web
 * React Native pour l'application mobile
 * Expo CLI si vous utilisez Expo pour le mobile
-* Base de données MySQL ou MariaDB
+* Base de données MySQL ou MariaDB ( sur ce cas on va aussi utiliser un serveur distant via phpmyadmin.co)
 * Git (pour cloner le projet)
 
 ## Installation
@@ -54,11 +50,15 @@ npm audit fix --force
 ```env
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=ton_mot_de_passe
+DB_PASSWORD= "aucun mot de pass"
 DB_NAME=cinephoria
 PORT=5000
 ```
-
+--phpmyadmin.co
+lancer votre navigateur web - phpmyadmin.co --
+serveur sql7.freesqldatabase.com
+utilisateur sql7798672
+mot de passe sql7798672
 ## Lancer le projet
 
 ### Backend (API)
